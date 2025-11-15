@@ -20,12 +20,12 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Flutter Map'),
-          centerTitle: true,
-          leading: Icon(Icons.login),
-          actions: [Icon(Icons.notifications)],
-          backgroundColor: Colors.teal,
+        appBar: AppBar(title: Text('Flutter Map'), centerTitle: true),
+        bottomNavigationBar: NavigationBar(
+          destinations: [
+            NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+            NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
+          ],
         ),
       ),
     );

@@ -19,7 +19,15 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
         ),
       ),
-      home: Scaffold(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Flutter Map'),
+          centerTitle: true,
+          leading: Icon(Icons.login),
+          actions: [Icon(Icons.notifications)],
+          backgroundColor: Colors.teal,
+        ),
+      ),
     );
   }
 }

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/views/pages/home_page.dart';
+import 'package:flutter_app/views/pages/profile_page.dart';
 import 'package:flutter_app/widgets/navbar_widget.dart';
+
+List<Widget> pages = [HomePage(), ProfilePage()];
 
 class WidgetTree extends StatelessWidget {
   const WidgetTree({super.key});
@@ -7,8 +11,9 @@ class WidgetTree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Flutter Map'), centerTitle: true),
-        bottomNavigationBar: NavbarWidget(),
-      );
+      appBar: AppBar(title: Text('Flutter Map'), centerTitle: true),
+      body: pages.elementAt(1),
+      bottomNavigationBar: NavbarWidget(),
+    );
   }
 }

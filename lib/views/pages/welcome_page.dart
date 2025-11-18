@@ -41,8 +41,8 @@ class WelcomePage extends StatelessWidget {
               },
               child: Text('Get Started'),
             ),
-            TextButton(
-              style: TextButton.styleFrom(
+            OutlinedButton(
+              style: OutlinedButton.styleFrom(
                 minimumSize: Size(double.infinity, 40.0),
               ),
               onPressed: () {

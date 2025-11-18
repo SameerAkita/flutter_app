@@ -20,7 +20,11 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Basic Layout'),
+                    Text(
+                      'Basic Layout',
+                      style: TextStyle(
+                        ),
+                    ),
                     Text('the description of this'),
                   ],
                 ),

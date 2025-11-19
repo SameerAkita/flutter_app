@@ -13,6 +13,9 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController controllerEmail = TextEditingController();
   TextEditingController controllerPassword = TextEditingController();
 
+  String confirmedEmail = '123';
+  String confirmedPassword = '456';
+
   @override
   void dispose() {
     controllerEmail.dispose();
@@ -58,14 +61,7 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 10.0),
             FilledButton(
               onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return WidgetTree();
-                    },
-                  ),
-                );
+                onLoginPressed();
               },
               style: FilledButton.styleFrom(
                 minimumSize: Size(double.infinity, 40.0),
@@ -76,5 +72,18 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  void onLoginPressed() {
+    if (confirmedEmail == controllerEmail.text && confirmedPassword == controllerPassword.text) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return WidgetTree();
+          },
+        ),
+      );
+    }
   }
 }

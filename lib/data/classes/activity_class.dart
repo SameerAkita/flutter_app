@@ -23,7 +23,7 @@ class Activity {
     required this.key,
   });
 
-  factory Activity.fromJsonn(Map<String, dynamic> json) {
+  factory Activity.fromJson(Map<String, dynamic> json) {
     return switch (json) {
       {
         'activity': String activity,
@@ -36,9 +36,18 @@ class Activity {
         'kidFriendly': bool kidFriendly,
         'link': String link,
         'key': String key,
-      } => 
+      } =>
         Activity(
-          activity: activity, availability: availability.toDouble(), type: type, participants: participants, price: price.toDouble(), accessibility: accessibility, duration: duration, kidFriendly: kidFriendly, link: link, key: key
+          activity: activity,
+          availability: availability.toDouble(),
+          type: type,
+          participants: participants,
+          price: price.toDouble(),
+          accessibility: accessibility,
+          duration: duration,
+          kidFriendly: kidFriendly,
+          link: link,
+          key: key,
         ),
       _ => throw const FormatException('Failed to load activity.'),
     };

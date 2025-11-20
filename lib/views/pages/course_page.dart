@@ -1,6 +1,7 @@
-import 'dart:convert' as convert;
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/data/classes/activity_class.dart';
 import 'package:flutter_app/widgets/hero_widget.dart';
 import 'package:http/http.dart' as http;
 
@@ -12,23 +13,23 @@ class CoursePage extends StatefulWidget {
 }
 
 class _CoursePageState extends State<CoursePage> {
+  late Activity activity;
   @override
   void initState() {
     getData();
     super.initState();
   }
 
-  void getData() async {
+  Future getData() async {
     var url = Uri.https('bored-api.appbrewery.com', '/random');
 
     var response = await http.get(url);
     if (response.statusCode == 200) {
-      var jsonResponse =
-          convert.jsonDecode(response.body) as Map<String, dynamic>;
-      var itemCount = jsonResponse['activity'];
-      print(itemCount);
+      return Activity.fromJson(
+        jsonDecode(response.body) as Map<String, dynamic>,
+      );
     } else {
-      print('Request failed with status: ${response.statusCode}.');
+      throw Exception('Failed to load album');
     }
   }
 
@@ -36,11 +37,28 @@ class _CoursePageState extends State<CoursePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
-        child: SingleChildScrollView(
-          child: Column(children: [HeroWidget(title: 'Flutter Map')]),
-        ),
+      body: FutureBuilder(
+        future: getData(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            Activity activity = snapshot.data;
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    HeroWidget(title: 'Flutter Map'),
+                    Center(child: Text(activity.activity)),
+                  ],
+                ),
+              ),
+            );
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error}');
+          }
+
+          return const CircularProgressIndicator();
+        },
       ),
     );
   }

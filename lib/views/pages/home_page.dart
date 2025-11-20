@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data/constants.dart';
+import 'package:flutter_app/widgets/container_widget.dart';
 import 'package:flutter_app/widgets/hero_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,30 +8,33 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20.0),
-      child: Column(
-        children: [
-          HeroWidget(title: 'Flutter Map'),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.0),
-            child: Card(
-              child: Container(
-                width: double.infinity,
-                padding: EdgeInsets.all(20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Basic Layout', style: KTextStyle.titleTealText),
-                    Text(
-                      'the description of this',
-                      style: KTextStyle.descriptionText,
-                    ),
-                  ],
-                ),
-              ),
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeroWidget(title: 'Flutter Map'),
+            ContainerWidget(
+              title: 'Basic Layout',
+              description: 'this is a description',
             ),
-          ),
-        ],
+            ContainerWidget(
+              title: 'Basic Layout',
+              description: 'this is a description',
+            ),
+            ContainerWidget(
+              title: 'Basic Layout',
+              description: 'this is a description',
+            ),
+            ContainerWidget(
+              title: 'Basic Layout',
+              description: 'this is a description',
+            ),
+            ContainerWidget(
+              title: 'Basic Layout',
+              description: 'this is a description',
+            ),
+          ],
+        ),
       ),
     );
   }

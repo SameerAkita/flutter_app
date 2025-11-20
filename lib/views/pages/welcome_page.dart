@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/views/pages/login_page.dart';
 import 'package:flutter_app/views/pages/onboarding.dart';
 import 'package:lottie/lottie.dart';
 

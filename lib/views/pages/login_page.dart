@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/views/widget_tree.dart';
-import 'package:flutter_app/widgets/hero_widget.dart';
+import 'package:lottie/lottie.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key, required this.title});
-
-  final String title;
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -35,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                HeroWidget(title: 'Login'),
+                Lottie.asset('assets/lotties/welcome.json'),
                 SizedBox(height: 20.0),
                 TextField(
                   controller: controllerEmail,
@@ -70,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                   style: FilledButton.styleFrom(
                     minimumSize: Size(double.infinity, 40.0),
                   ),
-                  child: Text(widget.title),
+                  child: Text('lets go'),
                 ),
                 SizedBox(height: 50.0),
               ],

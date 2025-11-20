@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/data/constants.dart';
 import 'package:flutter_app/widgets/container_widget.dart';
 import 'package:flutter_app/widgets/hero_widget.dart';
 
@@ -7,32 +8,25 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> list = [
+      KValue.keyConcepts,
+      KValue.cleanUi,
+      KValue.fixBugs,
+      KValue.basicLayout,
+    ];
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: SingleChildScrollView(
         child: Column(
           children: [
             HeroWidget(title: 'Flutter Map'),
-            ContainerWidget(
-              title: 'Basic Layout',
-              description: 'this is a description',
-            ),
-            ContainerWidget(
-              title: 'Basic Layout',
-              description: 'this is a description',
-            ),
-            ContainerWidget(
-              title: 'Basic Layout',
-              description: 'this is a description',
-            ),
-            ContainerWidget(
-              title: 'Basic Layout',
-              description: 'this is a description',
-            ),
-            ContainerWidget(
-              title: 'Basic Layout',
-              description: 'this is a description',
-            ),
+            ...List.generate(list.length, (index) {
+              return ContainerWidget(
+                title: list[index],
+                description: 'this is a description',
+              );
+            }),
           ],
         ),
       ),
